@@ -25,6 +25,7 @@ spring:
     proxy-target-class: true
     auto: true
   profiles:
+# 暴露两个配置文件，微服务自定义配置
     active: dev,common-dev
 #  cloud:
 #    nacos:
@@ -58,7 +59,7 @@ mybatis-plus:
       id-type: assign_id
   configuration:
     call-setters-on-nulls: true
-  mapper-locations: classpath*:/com/micro/repository/**/mapper/*.xml
+  mapper-locations: classpath*:/com/mall/repository/**/mapper/*.xml
 
 mybatis:
   configuration:

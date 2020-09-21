@@ -11,9 +11,9 @@
     </parent>
 
     <groupId>com.mall</groupId>
-    <artifactId>mall-respository</artifactId>
+    <artifactId>mall-repository</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mall-respository</name>
+    <name>mall-repository</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

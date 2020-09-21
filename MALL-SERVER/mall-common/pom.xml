@@ -149,7 +149,7 @@
 
         <dependency>
             <groupId>com.mall</groupId>
-            <artifactId>mall-respository</artifactId>
+            <artifactId>mall-repository</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
