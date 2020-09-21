@@ -1,0 +1,72 @@
+#management:
+#  server:
+#    port: 8081
+#  endpoints:
+#    jmx:
+#      exposure:
+#        include: "*"
+#    web:
+#      exposure:
+#        include: "*"
+#  endpoint:
+#    health:
+#      show-details: always
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: always
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  aop:
+    proxy-target-class: true
+    auto: true
+  profiles:
+    active: dev,common-dev
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:4001
+
+#feign:
+#  hystrix:
+#    enabled: false
+#
+#ribbon:
+#  OkToRetryOnAllOperations: false #对所有操作请求都进行重试,默认false
+#  ReadTimeout: 10000   #负载均衡超时时间，默认值5000
+#  ConnectTimeout: 2000 #ribbon请求连接的超时时间，默认值2000
+#  MaxAutoRetries: 0     #对当前实例的重试次数，默认0
+#  MaxAutoRetriesNextServer: 1 #对切换实例的重试次数，默认1
+#
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: false
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 20000
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: assign_id
+  configuration:
+    call-setters-on-nulls: true
+  mapper-locations: classpath*:/com/micro/repository/**/mapper/*.xml
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+swagger:
+  enable: true
+
+micro:
+  version: 1.0
+  appKey: micro-server

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.respository.basic.mapper.UserMapper">
+
+    <select id="find" resultType="com.mall.entity.basic.User">
+        select * from crm_user
+        <where>
+            <if test="id != null and id != ''">
+                and (
+                        id like CONCAT('%' , #{id} , '%')
+                    or
+                        `code` like CONCAT('%' , #{id} , '%')
+                )
+            </if>
+            <if test="name != null and name != ''">
+                and `name` like CONCAT('%' , #{name} , '%')
+            </if>
+            <if test="status == 0 or status == 1">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+</mapper>
