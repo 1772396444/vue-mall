@@ -14,10 +14,10 @@
 ### 模块配置
 +-----------------------------------------------------------------------------+
 | mall-entity                      实体类                                      |
-| mall-respository                 数据库操作(DAO)                              |
+| mall-repository                 数据库操作(DAO)                              |
 | mall-common                      公共的拦截器定义以及一些统一的类配置信息初始化      |
 | mall-geteway                     服务网关                                     |
 +-----------------------------------------------------------------------------+
 
-### 微服务基于模块化拆分，所以 mall-entity mall-respository mall-config 每个微服务都会引用到
+### 微服务基于模块化拆分，所以 mall-entity mall-repository mall-config 每个微服务都会引用到
 ### 项目打包需使用 maven-compiler-plugin 插件，打包命令 mvn package -Dmaven.test.skip=true

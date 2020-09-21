@@ -1,4 +1,4 @@
-package com.mall.common.constant;
+package com.mall.common.constants;
 
 /**
  * @Author: C-aranlism create by 2020/9/21.
@@ -9,5 +9,9 @@ package com.mall.common.constant;
 public interface SystemConstant {
 
     String HEADER_AUTHORIZATION = "authorization";
+
+    int STATUS_ACTIVE = 1;
+
+    int STATUS_INACTIVE = 0;
 
 }

@@ -1,8 +1,8 @@
 package com.mall.common.config;
 
 import com.alibaba.fastjson.JSON;
-import com.mall.common.constant.SystemConstant;
-import com.mall.common.filter.PageFilter;
+import com.mall.common.constants.SystemConstant;
+import com.mall.common.filter.page.PageFilter;
 import com.mall.common.utils.MessageUtils;
 import com.mall.common.utils.TokenUtils;
 import io.jsonwebtoken.ExpiredJwtException;
