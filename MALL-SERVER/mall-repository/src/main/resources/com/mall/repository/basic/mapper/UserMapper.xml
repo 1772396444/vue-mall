@@ -7,9 +7,9 @@
         <where>
             <if test="id != null and id != ''">
                 and (
-                        id like CONCAT('%' , #{id} , '%')
-                    or
-                        `code` like CONCAT('%' , #{id} , '%')
+                id like CONCAT('%' , #{id} , '%')
+                or
+                `code` like CONCAT('%' , #{id} , '%')
                 )
             </if>
             <if test="name != null and name != ''">
