@@ -15,7 +15,7 @@ spring:
           lower-case-service-id: true
           filters:
       routes:
-        - id: basic
+        - id: mall-basic
           uri: lb://mall-basic
           filters:
             #            - SwaggerHeaderFilter

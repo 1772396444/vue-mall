@@ -14,6 +14,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Created with IntelliJ IDEA.
@@ -25,7 +28,7 @@ public class JWTFilter extends BasicHttpAuthenticationFilter {
 
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
-    private static final String EXCLUSIVE_URL = "/index";
+    private static final String EXCLUSIVE_URL = "/login";
 
     @Override
     protected boolean isLoginAttempt(ServletRequest request , ServletResponse response) {

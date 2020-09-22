@@ -1,11 +1,14 @@
 package com.mall.entity.basic;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mall.entity.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 /**
  * @Author: C-aranlism create by 2020/9/21.
@@ -16,7 +19,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-@TableName("crm_user")
+@TableName("mall_user")
 @NoArgsConstructor
 public class User extends BaseEntity {
 
@@ -64,5 +67,23 @@ public class User extends BaseEntity {
      * 是否为客服
      */
     private String client;
+
+    /**
+     * 登录后菜单资源
+     */
+    @JsonIgnore
+    private transient List<Resource> resourceList;
+
+    /**
+     * 当前登录用户对应的角色
+     */
+    @JsonIgnore
+    private transient Role currentRole;
+
+    public static final String IS_CLIENT = "Y";
+    public static final String NO_CLIENT = "N";
+
+    public static final String DEFAULT_SALT = "123456";
+    public static final String DEFAULT_PASSWORD = "123456";
 
 }

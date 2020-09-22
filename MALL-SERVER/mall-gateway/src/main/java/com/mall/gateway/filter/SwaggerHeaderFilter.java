@@ -1,6 +1,6 @@
-package com.mall.geteway.filter;
+package com.mall.gateway.filter;
 
-import com.mall.geteway.provider.SwaggerProvider;
+import com.mall.gateway.provider.SwaggerProvider;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;

@@ -1,4 +1,4 @@
-package com.mall.geteway.controller;
+package com.mall.gateway.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

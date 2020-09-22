@@ -13,6 +13,38 @@
 #      show-details: always
 
 spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 设置最大最小连接数
+      initial-size: 3
+      min-idle: 5
+      max-active: 20
+      # 连接时长
+      max-wait: 60000
+      # 关闭超过时长没重新操作的连接
+      time-between-eviction-runs-millis: 60000
+      # 连接池最小连接存在时长
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+      filter:
+        commons-log:
+          connection-logger-name: stat,wall,log4j
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      # 合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -27,10 +59,10 @@ spring:
   profiles:
 # 暴露两个配置文件，微服务自定义配置
     active: dev,common-dev
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 127.0.0.1:4001
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:4001
 
 #feign:
 #  hystrix:
@@ -68,6 +100,6 @@ mybatis:
 swagger:
   enable: true
 
-micro:
+mall:
   version: 1.0
-  appKey: micro-server
+  appKey: mall-server

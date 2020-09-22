@@ -1,4 +1,4 @@
-package com.mall.geteway.provider;
+package com.mall.gateway.provider;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

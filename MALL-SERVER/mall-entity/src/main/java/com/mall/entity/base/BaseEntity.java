@@ -14,41 +14,41 @@ import java.io.Serializable;
 public class BaseEntity implements Serializable {
 
     /**
-     * 创建人
-     */
-    @Getter
-    @Setter
-    protected String createUser;
-
-    /**
      * 创建时间
      */
     @Getter
     @Setter
-    protected String createTime;
+    protected String createDate;
 
     /**
-     * 修改人
+     * 创建人
      */
     @Getter
     @Setter
-    protected String updateUser;
+    protected String createBy;
 
     /**
      * 修改时间
      */
     @Getter
     @Setter
-    protected String updateTime;
+    protected String modifyDate;
 
     /**
-     * 状态
+     * 修改人
      */
     @Getter
     @Setter
-    public Integer status;
+    protected String modifyBy;
 
-    public static final Integer ACTIVE = 1;
-    public static final Integer INACTIVE = 0;
+    /**
+     * 状态 0 无效 1 有效
+     */
+    @Getter
+    @Setter
+    protected Integer status;
+
+    public static final Integer STATUS_ACTIVE = 1;
+    public static final Integer STATUS_INACTIVE = 0;
 
 }

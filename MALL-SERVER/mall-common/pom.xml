@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.4.RELEASE</version>
+        <version>2.2.6.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -51,6 +51,24 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <exclusions>
+                <!-- 排除默认的tomcat-jdbc数据源 -->
+                <exclusion>
+                    <groupId>org.apache</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.22</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
             <version>9.0.24</version>
@@ -68,7 +86,6 @@
             <artifactId>shiro-spring</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -131,10 +148,10 @@
             <version>2.5</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
