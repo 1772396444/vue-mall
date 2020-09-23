@@ -51,10 +51,11 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
-      {
-        test: /\.less$/,
-        loader: "style-loader!css-loader!less-loader",
-      },
+      // webpack内置less sass文件加载器，这里重写会导致全局less报错
+      // {
+      //   test: /\.less$/,
+      //   loader: "style-loader!css-loader!less-loader"
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
