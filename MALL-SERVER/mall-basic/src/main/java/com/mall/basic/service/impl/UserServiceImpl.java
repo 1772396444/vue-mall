@@ -20,7 +20,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public List<User> find(Page page, String id, String name, Integer status) {
-        return null;
+        return this.baseMapper.find(page , id , name , status);
     }
 
 }

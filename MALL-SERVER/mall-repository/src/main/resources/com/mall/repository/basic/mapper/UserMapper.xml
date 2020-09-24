@@ -3,7 +3,7 @@
 <mapper namespace="com.mall.repository.basic.mapper.UserMapper">
 
     <select id="find" resultType="com.mall.entity.basic.User">
-        select * from crm_user
+        select * from mall_user
         <where>
             <if test="id != null and id != ''">
                 and (
