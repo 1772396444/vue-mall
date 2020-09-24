@@ -25,7 +25,7 @@ module.exports = {
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false,
-    useEslint: true,
+    useEslint: false,
     showEslintErrorsInOverlay: false,
 
     /**

@@ -32,12 +32,13 @@
 </template>
 
 <script>
+import api from '@components/api/coreApi';
 export default {
-    beforeCreate () {
+    beforeCreate() {
         this.form = this.$form.createForm(this, {name: 'normal_login'});
     },
     methods: {
-        handleSubmit (e) {
+        handleSubmit(e) {
             e.preventDefault();
             let data = this.form.getFieldsValue();
             if (!data.name) {
@@ -46,7 +47,12 @@ export default {
             if (!data.password) {
                 return this.$utils.Message.error(null, '密码不能为空!');
             }
-            this.$utils.Message.success(null, `name=${data.name}\npassword=${data.password}`);
+            api.login(data).then(response => {
+                if(response.data && response.data.code === 200){
+                    this.$store.commit('token' , response.data.token);
+                    this.$router.push('/index').catch(err => err);
+                }
+            })
         }
     }
 };
@@ -62,7 +68,7 @@ export default {
     align-items: center;
     background-size: cover;
     background-image: url(@image);
-
+    
     .content-bar {
         width: 100vw;
         height: 300px;
@@ -70,23 +76,23 @@ export default {
         align-items: center;
         justify-content: center;
     }
-
+    
     .content-bar-color {
         opacity: .4;
         width: 100%;
         height: 100%;
         background: #78b3ae;
     }
-
+    
     .ant-form-item {
         opacity: .4;
         width: 240px;
         margin: 0 auto 10px;
-
+        
         &:hover {
             opacity: 1;
             width: 260px;
-            transition: width .5s , opacity 1s;
+            transition: width .5s, opacity 1s;
         }
     }
 }

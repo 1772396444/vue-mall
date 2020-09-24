@@ -32,11 +32,16 @@ server.interceptors.response.use(
     response => {
         console.log(response);
         if (response.data.code !== 200) {
-            router.replace('/login');
-            store.commit('token', '');
-            localStorage.removeItem('token');
-            let message = responseCode[response.data.code] ? responseCode[response.data.code] : response.data.message;
-            antd.message.error(message);
+            if(Object.keys(responseCode).includes(JSON.stringify(response.data.code))){
+                antd.message.error(responseCode[response.data.code]);
+            }else if (Object.keys(tokenCode).includes(JSON.stringify(response.data.code))) {
+                router.replace('/login');
+                store.commit('token', '');
+                localStorage.removeItem('token');
+                antd.message.error(responseCode[tokenCode.data.code]);
+            }else{
+                antd.message.error(response.data.message);
+            }
         }
         return response.data;
     },
@@ -46,14 +51,16 @@ server.interceptors.response.use(
     }
 );
 
+const tokenCode = {
+    401: '未授权，请重新登录'
+}
+
 const responseCode = {
     400: '错误请求',
-    401: '未授权，请重新登录',
     403: '拒绝访问',
     404: '请求错误,未找到该资源',
     405: '请求方法未允许',
-    408: '请求超时',
-    500: '服务器端出错'
+    408: '请求超时'
 };
 
 const request = {
@@ -69,7 +76,7 @@ const request = {
 
     post (url, params) {
         const config = {
-            method: 'get',
+            method: 'post',
             url
         };
         if (params) config.data = params;

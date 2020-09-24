@@ -5,5 +5,5 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   BASE_API: '"/api"',
-  PAGE_URL: '"@components/page"',
+  PAGE_URL: '"@components/pager"',
 })

@@ -26,7 +26,7 @@ module.exports = {
 		"indent": [2, 4],
 		// 严格对比,判断相等必须用 === !==
 		"eqeqeq": [2, 'always'],
-		// 是否必须以分号结尾
+		// 必须以分号结尾
 		"semi": [2, 'always'],
 		// 不允许new对象之后不使用
 		"no-new": [0],
@@ -36,6 +36,10 @@ module.exports = {
 		"space-infix-ops": "error",
 		// 允许空号(代码规范)
 		'generator-star-spacing': 'off',
+		// 允许在注释之外使用空格
+		"no-irregular-whitespace": 'off',
+		// 函数前可以不加空格 functin() {}
+		"space-before-function-paren": 0,
 		// 测试环境不允许使用 debugger
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
 	}

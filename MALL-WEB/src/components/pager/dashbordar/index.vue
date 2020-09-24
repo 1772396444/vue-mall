@@ -1,7 +1,9 @@
 <template>
-    <div>404</div>
+    <div>Content</div>
 </template>
 
 <script>
-export default {};
+export default {
+
+}
 </script>
