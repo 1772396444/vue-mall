@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <div class="content-bar">
-            <div class="content-bar-backage"></div>
+            <div class="content-bar-color"></div>
             <a-form
                 id="components-form-demo-normal-login"
                 :form="form"
@@ -11,14 +11,14 @@
                 <a-form-item>
                     <a-input
                         v-decorator="['name']"
-                        placeholder="请输入用户名"
+                        placeholder="UserName"
                     />
                 </a-form-item>
                 <a-form-item>
                     <a-input
                         v-decorator="['password']"
                         type="password"
-                        placeholder="请输入密码"
+                        placeholder="PassWord"
                     />
                 </a-form-item>
                 <a-form-item>
@@ -71,7 +71,7 @@ export default {
         justify-content: center;
     }
 
-    .content-bar-backage {
+    .content-bar-color {
         opacity: .4;
         width: 100%;
         height: 100%;
@@ -91,24 +91,6 @@ export default {
     }
 }
 
-input {
-    &::-webkit-input-placeholder {
-        color: white;
-    }
-
-    &::-ms-input-placeholder {
-        color: white;
-    }
-
-    &:-moz-placeholder {
-        color: white;
-    }
-
-    &::-moz-placeholder {
-        color: white;
-    }
-}
-
 #components-form-demo-normal-login {
     width: 300px;
     position: absolute;
@@ -117,6 +99,7 @@ input {
 #components-form-demo-normal-login .ant-input {
     color: white;
     height: 40px;
+    font-weight: 900;
     text-align: center;
     border-radius: 20px;
     background: #4d575f;

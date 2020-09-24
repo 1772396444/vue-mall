@@ -9,7 +9,6 @@ import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 
 import less from 'less';
-import './system.less';
 
 Vue.config.productionTip = false;
 
