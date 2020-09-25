@@ -6,12 +6,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `mall_role_resource`;
 CREATE TABLE `mall_role_resource` (
   `id` varchar(50) NOT NULL,                        -- 主键ID
-  `role_id` varchar(50) DEFAULT NULL,               -- 角色ID
-  `resource_id` varchar(50) DEFAULT NULL,           -- 资源ID
-  `create_date` varchar(50) DEFAULT NULL,           -- 创建时间(标准字段)
-  `create_by` varchar(50) DEFAULT NULL,             -- 创建人(标准字段)
-  `modify_date` varchar(50) DEFAULT NULL,           -- 修改时间(标准字段)
-  `modify_by` varchar(50) DEFAULT NULL,             -- 修改人(标准字段)
+  `roleId` varchar(50) DEFAULT NULL,               -- 角色ID
+  `resourceId` varchar(50) DEFAULT NULL,           -- 资源ID
+  `createDate` varchar(50) DEFAULT NULL,           -- 创建时间(标准字段)
+  `createBy` varchar(50) DEFAULT NULL,             -- 创建人(标准字段)
+  `modifyDate` varchar(50) DEFAULT NULL,           -- 修改时间(标准字段)
+  `modifyBy` varchar(50) DEFAULT NULL,             -- 修改人(标准字段)
   `status` int(1) DEFAULT NULL,                     -- 状态(标准字段)
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -29,6 +29,7 @@ INSERT INTO `mall_role_resource` VALUES ('C95CA741195D4210BB5ACDA96403FE42', '22
 INSERT INTO `mall_role_resource` VALUES ('C974B3F420304CE1A9AFEE088BD0D870', '111', '0000000000', '123', '2020-06-26 20:22:17', '123', '2020-06-26 20:22:17', '1');
 INSERT INTO `mall_role_resource` VALUES ('DABB24DB7AAB2310DBD66E8E528F4491', '111', '0200300800', '123', '2020-09-16 11:23:16', '123', '2020-09-16 11:23:22', '1');
 INSERT INTO `mall_role_resource` VALUES ('FEEB24DB7B264EFE8BD66E8E528F8851', '111', '0100300000', '123', '2020-06-26 20:22:17', '123', '2020-06-26 20:22:17', '1');
+INSERT INTO `mall_role_resource` VALUES ('ADD21B264C3BA3108BD66E8E528DA102', '111', '0100500000', '123', '2020-06-26 20:22:17', '123', '2020-06-26 20:22:17', '1');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

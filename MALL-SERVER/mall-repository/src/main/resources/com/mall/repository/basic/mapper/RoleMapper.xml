@@ -14,8 +14,8 @@
             r1.code as code,
             r1.name as name
         from mall_role r1
-        inner join mall_user_role r2 on (r1.id = r2.role_id)
-        where r2.user_id = #{userId} and r1.status = #{status}
+        inner join mall_user_role r2 on (r1.id = r2.roleId)
+        where r2.userId = #{userId} and r1.status = #{status}
     </select>
 
 </mapper>

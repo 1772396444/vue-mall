@@ -3,6 +3,9 @@ package com.mall.entity.basic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mall.entity.base.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -17,45 +20,54 @@ import java.util.List;
  * @Description
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
-@TableName("mall_user")
 @NoArgsConstructor
+@AllArgsConstructor
+@TableName("mall_user")
+@Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
+@ApiModel(value = "用户实体", description = "User Entity")
 public class User extends BaseEntity {
 
     /**
      * 主键ID
      */
+    @ApiModelProperty(value = "主键id")
     private String id;
 
     /**
      * 用户名
      */
+    @ApiModelProperty(value = "用户名")
     private String name;
 
     /**
      * 用户编码
      */
+    @ApiModelProperty(value = "用户编码")
     private String code;
 
     /**
      * 密码
      */
+    @ApiModelProperty(value = "用户密码")
     private String password;
 
     /**
      * 手机号
      */
+    @ApiModelProperty(value = "手机号")
     private String mobile;
 
     /**
      * 性别
      */
+    @ApiModelProperty(value = "性别")
     private String sex;
 
     /**
      * 电子邮箱
      */
+    @ApiModelProperty(value = "电子邮箱")
     private String email;
 
     /**

@@ -1,6 +1,7 @@
 package com.mall.common.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mall.common.bean.ApiResponse;
 import com.mall.common.utils.MessageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -20,23 +21,35 @@ import java.util.Map;
 @Slf4j
 public class BaseController {
 
+    public <T> ApiResponse success(Class<T> clz) {
+        return ApiResponse.<T>builder().code(200).message("OK").status(true).data(null).build();
+    }
+
+    public <T> ApiResponse success(Class<T> clz , String message) {
+        return ApiResponse.<T>builder().code(200).message(message).status(true).data(null).build();
+    }
+
+    public <T> ApiResponse success(Class<T> clz , Object data) {
+        return ApiResponse.<T>builder().code(200).message("OK").status(true).data(data).build();
+    }
+
     /**
      * 常规Map结果集
      * @return
      */
-    public Map<String , Object> success(){
+    public Map<String , Object> successMap(){
         return MessageUtils.success();
     }
 
-    public Map<String , Object> success(String message){
+    public Map<String , Object> successMap(String message){
         return MessageUtils.success(message);
     }
 
-    public Map<String , Object> success(Object data){
+    public Map<String , Object> successMap(Object data){
         return MessageUtils.success("data" , data);
     }
 
-    public Map<String , Object> success(String key , Object data){
+    public Map<String , Object> successMap(String key , Object data){
         return MessageUtils.success(key , data);
     }
 

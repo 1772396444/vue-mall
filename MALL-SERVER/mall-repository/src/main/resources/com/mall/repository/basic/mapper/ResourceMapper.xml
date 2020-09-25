@@ -4,10 +4,10 @@
 
     <resultMap id="ResourceMap" type="com.mall.entity.basic.Resource" autoMapping="true">
         <result column="id" property="id" javaType="String" />
-        <result column="default_icon" property="defaultIcon" javaType="String" />
+        <result column="defaultIcon" property="defaultIcon" javaType="String" />
         <result column="menu" property="menu" javaType="Integer" />
         <result column="name" property="name" javaType="String" />
-        <result column="parent_id" property="parentId" javaType="String" />
+        <result column="parentId" property="parentId" javaType="String" />
         <result column="permission" property="permission" javaType="String" />
         <result column="url" property="url" javaType="String" />
         <result column="sorts" property="sorts" javaType="Integer" />
@@ -21,14 +21,14 @@
             resource.*
         FROM
             mall_resource resource
-        LEFT JOIN mall_role_resource role ON(resource.id = role.resource_id)
+        LEFT JOIN mall_role_resource role ON(resource.id = role.resourceId)
         WHERE
-            resource. STATUS = #{status} and role.role_id = #{roleId}
+            resource.STATUS = #{status} and role.roleId = #{roleId}
             order by id asc
     </select>
 
     <select id="maxId" resultType="java.lang.String">
-        select max(id) from  crm_resource where type = #{type} and parent_id = #{parentId}
+        select max(id) from  crm_resource where type = #{type} and parentId = #{parentId}
     </select>
 
 </mapper>

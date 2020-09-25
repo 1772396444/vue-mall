@@ -41,7 +41,7 @@ public class AuthController extends ApiBaseController {
     public Map<String, Object> login(@RequestBody @Valid AuthFrom from) {
         User user = authMgr.loginValid(from);
 
-        Map resultMap = success();
+        Map resultMap = successMap();
         Map<String, Object> claims = new HashMap<>(5);
         claims.put("id", from.getName());
         claims.put("userId", user.getId());
@@ -51,7 +51,7 @@ public class AuthController extends ApiBaseController {
         claims.put("roleId", user.getCurrentRole().getId());
         claims.put("client", user.getClient());
         String token = TokenUtils.sign(user.getId(), claims);
-        Map<String, Object> map = success("用户登录成功");
+        Map<String, Object> map = successMap("用户登录成功");
         resultMap.put("token", token);
         map.put("data", resultMap);
         return map;
@@ -61,7 +61,7 @@ public class AuthController extends ApiBaseController {
     @GetMapping("/logout")
     public Map<String, Object> logout() {
         SecurityUtils.getSubject().logout();
-        return success("退出完成");
+        return successMap("退出完成");
     }
 
 }

@@ -14,12 +14,12 @@ CREATE TABLE `mall_user` (
   `sex` varchar(2) DEFAULT NULL,                -- 性别
   `salt` varchar(50) DEFAULT NULL,              -- 密码盐
   `client` varchar(2) DEFAULT NULL,             -- 是否是客服(用作在线聊天权限)
-  `create_date` varchar(50) DEFAULT NULL,       -- 创建时间(标准字段)
-  `create_by` varchar(50) DEFAULT NULL,         -- 创建人(标准字段)
-  `modify_date` varchar(50) DEFAULT NULL,       -- 修改时间(标准字段)
-  `modify_by` varchar(50) DEFAULT NULL,         -- 修改人(标准字段)
+  `createDate` varchar(50) DEFAULT NULL,       -- 创建时间(标准字段)
+  `createBy` varchar(50) DEFAULT NULL,         -- 创建人(标准字段)
+  `modifyDate` varchar(50) DEFAULT NULL,       -- 修改时间(标准字段)
+  `modifyBy` varchar(50) DEFAULT NULL,         -- 修改人(标准字段)
   `status` int(1) DEFAULT NULL,                 -- 状态(标准字段)
-  `cp_user_id` varchar(100) DEFAULT NULL,       -- 暂时没有实际用途
+  `cpUserId` varchar(100) DEFAULT NULL,       -- 暂时没有实际用途
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

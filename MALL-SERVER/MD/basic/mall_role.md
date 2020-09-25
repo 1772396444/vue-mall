@@ -9,12 +9,12 @@ CREATE TABLE `mall_role` (
   `code` varchar(50) DEFAULT NULL,              -- 角色编码(全局唯一)
   `name` varchar(50) DEFAULT NULL,              -- 角色名称
   `sn` varchar(50) DEFAULT NULL,                -- 国际化
-  `category_id` varchar(50) DEFAULT NULL,       -- 组别ID
-  `category_name` varchar(50) DEFAULT NULL,     -- 组别名称
-  `create_date` varchar(50) DEFAULT NULL,       -- 创建时间(标准字段)
-  `create_by` varchar(50) DEFAULT NULL,         -- 创建人(标准字段)
-  `modify_date` varchar(50) DEFAULT NULL,       -- 修改时间(标准字段)
-  `modify_by` varchar(50) DEFAULT NULL,         -- 修改人(标准字段)
+  `categoryId` varchar(50) DEFAULT NULL,       -- 组别ID
+  `categoryName` varchar(50) DEFAULT NULL,     -- 组别名称
+  `createDate` varchar(50) DEFAULT NULL,       -- 创建时间(标准字段)
+  `createBy` varchar(50) DEFAULT NULL,         -- 创建人(标准字段)
+  `modifyDate` varchar(50) DEFAULT NULL,       -- 修改时间(标准字段)
+  `modifyBy` varchar(50) DEFAULT NULL,         -- 修改人(标准字段)
   `status` int(1) DEFAULT NULL,                 -- 状态(标准字段)
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

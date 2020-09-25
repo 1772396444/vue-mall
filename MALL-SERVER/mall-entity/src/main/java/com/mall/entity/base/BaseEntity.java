@@ -1,5 +1,6 @@
 package com.mall.entity.base;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +19,7 @@ public class BaseEntity implements Serializable {
      */
     @Getter
     @Setter
+    @ApiModelProperty(value = "创建时间")
     protected String createDate;
 
     /**
@@ -25,6 +27,7 @@ public class BaseEntity implements Serializable {
      */
     @Getter
     @Setter
+    @ApiModelProperty(value = "创建人")
     protected String createBy;
 
     /**
@@ -32,6 +35,7 @@ public class BaseEntity implements Serializable {
      */
     @Getter
     @Setter
+    @ApiModelProperty(value = "修改时间")
     protected String modifyDate;
 
     /**
@@ -39,6 +43,7 @@ public class BaseEntity implements Serializable {
      */
     @Getter
     @Setter
+    @ApiModelProperty(value = "修改人")
     protected String modifyBy;
 
     /**
@@ -46,6 +51,7 @@ public class BaseEntity implements Serializable {
      */
     @Getter
     @Setter
+    @ApiModelProperty(value = "状态")
     protected Integer status;
 
     public static final Integer STATUS_ACTIVE = 1;
