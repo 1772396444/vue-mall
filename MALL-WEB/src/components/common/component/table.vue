@@ -1,15 +1,16 @@
 <template>
-    <a-table bordered :columns="columns" :data-source="tableData" :loading="loading"
+    <Table bordered :columns="columns" :data-source="tableData" :loading="loading"
              @change="handleTableChange" :pagination="pagination" size="middle">
         <!-- table按钮组 -->
         <span slot="action" slot-scope="text, record">
-            <a-button v-for="(button , index) in buttons" :key="index" :type="button.type"
-                      size="small" @click="buttonClick(record , button)">{{ button.name }}</a-button>
+            <Button v-for="(button , index) in buttons" :key="index" :type="button.type"
+                      size="small" @click="buttonClick(record , button)">{{ button.name }}</Button>
         </span>
-    </a-table>
+    </Table>
 </template>
 
 <script>
+import { Table , Button } from 'ant-design-vue';
 export default {
     props: ['columns', 'refreshTable'],
     data() {
@@ -61,6 +62,10 @@ export default {
         buttonClick(record, button) {
             button.callback(button.modal, record);
         },
+    },
+    components: {
+        Table,
+        Button
     }
 }
 </script>

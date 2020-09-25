@@ -1,38 +1,39 @@
 <template>
-    <a-form class="ant-advanced-search-form" :form="form" @submit="handleSearch">
-        <a-row :gutter="24">
-            <a-col
+    <Form class="ant-advanced-search-form" :form="form" @submit="handleSearch">
+        <Row :gutter="24">
+            <Col
                 v-for="(filed , index) in data"
                 :key="index"
                 :span="6"
                 :style="{ display: index < count ? 'block' : 'none' }"
             >
-                <a-form-item :label="filed.label">
-                    <a-input
+                <FormItem :label="filed.label">
+                    <Input
                         v-decorator="[filed.name]"
                         :placeholder="filed.placeholder"
                     />
-                </a-form-item>
-            </a-col>
-        </a-row>
-        <a-row>
-            <a-col :span="24" :style="{ textAlign: 'right' }">
-                <a-button type="primary" html-type="submit">
+                </FormItem>
+            </Col>
+        </Row>
+        <Row>
+            <Col :span="24" :style="{ textAlign: 'right' }">
+                <Button type="primary" html-type="submit">
                     Search
-                </a-button>
-                <a-button :style="{ marginLeft: '8px' }" @click="handleReset">
+                </Button>
+                <Button :style="{ marginLeft: '8px' }" @click="handleReset">
                     Clear
-                </a-button>
+                </Button>
                 <a :style="{ marginLeft: '8px', fontSize: '12px' }" @click="toggle">
                     Collapse
-                    <a-icon :type="expand ? 'up' : 'down'"/>
+                    <Icon :type="expand ? 'up' : 'down'"/>
                 </a>
-            </a-col>
-        </a-row>
-    </a-form>
+            </Col>
+        </Row>
+    </Form>
 </template>
 
 <script>
+import { Form , Row , Col , Input , Button , Icon } from 'ant-design-vue';
 export default {
     props: ['data'],
     data() {
@@ -60,6 +61,15 @@ export default {
         toggle() {
             this.expand = !this.expand;
         },
+    },
+    components: {
+        Form,
+        Row,
+        Col,
+        Input,
+        Button,
+        Icon,
+        FormItem: Form.Item
     }
 }
 </script>

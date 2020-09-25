@@ -2,58 +2,68 @@
     <div class="content">
         <div class="content-bar">
             <div class="content-bar-color"></div>
-            <a-form
+            <Form
                 id="components-form-demo-normal-login"
-                :form="form"
                 class="login-form"
                 @submit="handleSubmit"
             >
-                <a-form-item>
-                    <a-input
+                <Item>
+                    <Input
+                        v-model="name"
                         v-decorator="['name']"
                         placeholder="UserName"
                     />
-                </a-form-item>
-                <a-form-item>
-                    <a-input
+                </Item>
+                <Item>
+                    <Input
+                        v-model="password"
                         v-decorator="['password']"
                         type="password"
                         placeholder="PassWord"
                     />
-                </a-form-item>
-                <a-form-item>
-                    <a-button type="primary" html-type="submit" class="login-form-button">
+                </Item>
+                <Item>
+                    <Button type="primary" html-type="submit" class="login-form-button">
                         Log in
-                    </a-button>
-                </a-form-item>
-            </a-form>
+                    </Button>
+                </Item>
+            </Form>
         </div>
     </div>
 </template>
 
 <script>
 import api from '@components/api/coreApi';
+import { Form , Input , Button } from 'ant-design-vue';
 export default {
-    beforeCreate() {
-        this.form = this.$form.createForm(this, {name: 'normal_login'});
+    data() {
+        return {
+            name: '',
+            password: ''
+        }
     },
     methods: {
-        handleSubmit(e) {
+        handleSubmit(e , value) {
             e.preventDefault();
-            let data = this.form.getFieldsValue();
-            if (!data.name) {
+            if (!this.name) {
                 return this.$utils.Message.error(null, '用户名不能为空!');
             }
-            if (!data.password) {
+            if (!this.password) {
                 return this.$utils.Message.error(null, '密码不能为空!');
             }
-            api.login(data).then(response => {
+            api.login({name: this.name , password: this.password}).then(response => {
                 if(response.data && response.data.code === 200){
                     this.$store.commit('token' , response.data.token);
                     this.$router.push('/index').catch(err => err);
                 }
             })
         }
+    },
+    components: {
+        Form,
+        Item: Form.Item,
+        Input,
+        Button
     }
 };
 </script>

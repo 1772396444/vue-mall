@@ -1,12 +1,13 @@
 <template>
     <div class="button-box" :style="{height: hasBtn ? '60px' : '15px'}">
-        <a-button v-for="(button , index) in buttons" :type="button.type" @click="click(button)"
+        <Button v-for="(button , index) in buttons" :type="button.type" @click="click(button)"
                   :key="index" :icon="button.icon" v-permission="button.permission">{{ button.name }}
-        </a-button>
+        </Button>
     </div>
 </template>
 
 <script>
+import { Button } from 'ant-design-vue';
 export default {
     props: ['buttons'],
     data() {
@@ -28,6 +29,9 @@ export default {
         click(button) {
             button.callback(button.modal);
         }
+    },
+    components: {
+        Button
     }
 }
 </script>

@@ -1,25 +1,26 @@
 <template>
     
-    <a-layout id="components-layout-demo-top-side-2">
+    <Layout id="components-layout-demo-top-side-2">
         <!-- 头部 -->
         <Header/>
-        <a-layout class="content">
+        <Layout class="content">
             <!-- Sider -->
             <Sider/>
             <!-- content -->
-            <a-layout>
+            <Layout>
                 <Content/>
-            </a-layout>
-        </a-layout>
-    </a-layout>
+            </Layout>
+        </Layout>
+    </Layout>
 
 </template>
 
 <script>
-
+import { Layout } from 'ant-design-vue'
 export default {
     methods: {},
     components: {
+        Layout,
         Header: () => import('@components/common/page/header'),
         Sider: () => import('@components/common/page/sider'),
         Content: () => import('@components/common/page/content')

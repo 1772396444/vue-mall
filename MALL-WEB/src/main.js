@@ -5,16 +5,14 @@ import store from './store';
 import router from './router';
 import utils from './utils';
 
-import Antd from 'ant-design-vue';
-import 'ant-design-vue/dist/antd.css';
+import { Modal } from 'ant-design-vue';
 
 import less from 'less';
 
 Vue.config.productionTip = false;
 
-// 注册antd
-Vue.use(Antd);
 Vue.use(less);
+Vue.use(Modal);
 
 Vue.prototype.$utils = utils;
 

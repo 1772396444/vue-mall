@@ -2,18 +2,19 @@
     <div>
         <!-- breadcrumb页面头面包屑 -->
         <div class="breadcrumb" v-if="showBar">
-            <a-breadcrumb>
-                <a-breadcrumb-item v-for="breadcrumb in breadcrumbList" :key="breadcrumb.name">
+            <Breadcrumb>
+                <BreadcrumbItem v-for="breadcrumb in breadcrumbList" :key="breadcrumb.name">
                     {{ breadcrumb.name }}
-                </a-breadcrumb-item>
-            </a-breadcrumb>
+                </BreadcrumbItem>
+            </Breadcrumb>
         </div>
         <div class="pagerView">
             <!-- vue slot插槽 -->
             <slot name="content"/>
             <!-- 模态框展示 -->
-            <a-modal
+            <Modal
                 width="80vw"
+                :maskClosable=false
                 :title="modalOption.title"
                 :visible="modalOption.show"
                 :confirm-loading="confirmLoading"
@@ -23,12 +24,13 @@
                 <!-- component is 属性显示需要展示的页面，用于文件解耦 -->
                 <component v-if="modalOption.component" :is="modalOption.component" :params="params" :submit="submit"
                            @onSubmit="onSubmit"></component>
-            </a-modal>
+            </Modal>
         </div>
     </div>
 </template>
 
 <script>
+import { Modal , Breadcrumb } from 'ant-design-vue';
 export default {
     props: ['showBar', 'modal', 'params'],
     data() {
@@ -81,6 +83,11 @@ export default {
             },
             deep: true
         }
+    },
+    components: {
+        Modal,
+        Breadcrumb,
+        BreadcrumbItem: Breadcrumb.Item
     }
 }
 </script>

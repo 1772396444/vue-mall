@@ -1,6 +1,6 @@
 <template>
-    <a-layout-sider width="200" style="background: #fff">
-        <a-menu
+    <Sider width="200" style="background: #fff">
+        <Menu
             theme="light"
             mode="inline"
             :default-selected-keys="selectedKeys"
@@ -8,27 +8,28 @@
             :style="{ height: '100%', borderRight: 0 }"
         >
             <template v-for="menu in menuTree">
-                <a-menu-item v-if="menu.child.length === 0" :key="menu.id" >
+                <Item v-if="menu.child.length === 0" :key="menu.id" >
                     <Link :to="menu.url" :key="menu.name">
-                        <span ><a-icon type="user" />{{menu.name}}</span>
+                        <span ><Icon type="user" />{{menu.name}}</span>
                     </Link>
-                </a-menu-item>
-                <a-sub-menu v-else :key="menu.id">
-                    <span slot="title"><a-icon type="user" />{{menu.name}}</span>
-                    <a-menu-item v-for="child in menu.child" :key="child.id">
+                </Item>
+                <SubMenu v-else :key="menu.id">
+                    <span slot="title"><Icon type="user" />{{menu.name}}</span>
+                    <Item v-for="child in menu.child" :key="child.id">
                         <Link :to="child.url" :key="child.name">
-                            <span><a-icon type="menu-unfold" />{{child.name}}</span>
+                            <span><Icon type="menu-unfold" />{{child.name}}</span>
                         </Link>
-                    </a-menu-item>
-                </a-sub-menu>
+                    </Item>
+                </SubMenu>
             </template>
-        </a-menu>
-    </a-layout-sider>
+        </Menu>
+    </Sider>
 </template>
 
 <script>
 
 import api from '@components/api/coreApi';
+import { Layout , Menu , Icon } from 'ant-design-vue';
 
 export default {
     data() {
@@ -40,14 +41,14 @@ export default {
             selectedKeys: [],
         }
     },
-    async mounted() {
-        this.loadKeys();
-        await api.menuList().then(res => {
+    mounted() {
+        api.menuList().then(res => {
             this.menuList = [...res.data];
+            this.loadTreeMenu();
+            this.saveMenu();
+            this.saveBtn();
+            this.loadKeys();
         });
-        this.loadTreeMenu();
-        this.saveMenu();
-        this.saveBtn();
     },
     methods: {
         loadTreeMenu(parentId = '0') {
@@ -90,8 +91,12 @@ export default {
                             return child;
                         }
                     });
-                    if(keyList.length === 0){
-                        this.$router.push(route.children[0].path).catch(err => err);
+                    if(!keyList || keyList.length === 0){
+                        try{
+                            this.$router.push(route.children[0].path);
+                        }catch (e){
+                            window.location.reload();
+                        }
                     }else{
                         keyList.forEach((child) => {
                             if(this.$route.path === child.path){
@@ -114,6 +119,11 @@ export default {
         },
     },
     components: {
+        Menu,
+        Icon,
+        Sider: Layout.Sider,
+        Item: Menu.Item,
+        SubMenu: Menu.SubMenu,
         Link: () => import('./link')
     }
 }
