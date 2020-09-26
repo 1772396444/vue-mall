@@ -24,11 +24,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class ResourceController extends ApiBaseController {
 
     @Autowired
-    ResourceMgr resourceMgr;
+    private ResourceMgr resourceMgr;
 
     @ApiOperation(value = "获取当前角色菜单")
     @PostMapping("/menuList")
     public ApiResponse<Resource> menuList(Token token) {
+        // return success(resourceMgr.menuList(token.getRoleId()));
+        return success(Resource.class , resourceMgr.menuList(token.getRoleId()));
+    }
+
+    @ApiOperation(value = "获取当前角色菜单")
+    @PostMapping("/menuList")
+    public ApiResponse<Resource> getResource(Token token) {
         // return success(resourceMgr.menuList(token.getRoleId()));
         return success(Resource.class , resourceMgr.menuList(token.getRoleId()));
     }
