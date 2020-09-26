@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import api from '@components/api/userApi';
+import api from '@components/api/basic/templateApi';
 export default {
     data() {
         return {
@@ -27,7 +27,8 @@ export default {
                     permission: 'account:test7',
                     callback: (modal) => this.showModal(modal),
                     modal: {
-                        title: '资源新增',
+                        type: 'drawer',
+                        title: '新增页面配置',
                         afterSubmit: () => this.$refs.table.refresh(),
                         component: resolve => require(['./add'] , resolve),
                     },
@@ -52,6 +53,7 @@ export default {
                             type: 'primary',
                             callback: (modal , params) => this.showModal(modal , params),
                             modal: {
+                                type: 'drawer',
                                 title: '资源修改',
                                 afterSubmit: () => this.$refs.table.refresh(),
                                 component: resolve => require(['./edit'] , resolve),

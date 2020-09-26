@@ -14,6 +14,7 @@
             <!-- 模态框展示 -->
             <Modal
                 width="80vw"
+                v-if="!modal.type || modal.type === 'modal'"
                 :maskClosable=false
                 :title="modalOption.title"
                 :visible="modalOption.show"
@@ -25,12 +26,48 @@
                 <component v-if="modalOption.component" :is="modalOption.component" :params="params" :submit="submit"
                            @onSubmit="onSubmit"></component>
             </Modal>
+            <div>
+                <Drawer
+                    width="40vw"
+                    v-if="modal.type && modal.type === 'drawer'"
+                    :title="modalOption.title"
+                    placement="right"
+                    :closable="false"
+                    :visible="modalOption.show"
+                    @close="handleCancel"
+                >
+                    <component v-if="modalOption.component" :is="modalOption.component" :params="params"
+                               :submit="submit"
+                               @onSubmit="onSubmit"></component>
+                    <div
+                        :style="{
+                          position: 'absolute',
+                          right: 0,
+                          bottom: 0,
+                          width: '100%',
+                          borderTop: '1px solid #e9e9e9',
+                          padding: '10px 16px',
+                          background: '#fff',
+                          textAlign: 'right',
+                          zIndex: 1,
+                        }"
+                    >
+                        <Button :style="{ marginRight: '8px' }" @click="handleCancel">
+                            Cancel
+                        </Button>
+                        <Button type="primary" @click="handleOk">
+                            Submit
+                        </Button>
+                    </div>
+                </Drawer>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import { Modal , Breadcrumb } from 'ant-design-vue';
+import {Modal, Drawer, Button, Breadcrumb} from 'ant-design-vue';
+
 export default {
     props: ['showBar', 'modal', 'params'],
     data() {
@@ -86,6 +123,8 @@ export default {
     },
     components: {
         Modal,
+        Drawer,
+        Button,
         Breadcrumb,
         BreadcrumbItem: Breadcrumb.Item
     }

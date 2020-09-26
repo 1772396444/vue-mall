@@ -8,10 +8,7 @@
                 :style="{ display: index < count ? 'block' : 'none' }"
             >
                 <FormItem :label="filed.label">
-                    <Input
-                        v-decorator="[filed.name]"
-                        :placeholder="filed.placeholder"
-                    />
+                    <InputType ref="input" :data="filed"></InputType>
                 </FormItem>
             </Col>
         </Row>
@@ -38,6 +35,7 @@ export default {
     props: ['data'],
     data() {
         return {
+            paramsData: [],
             expand: false,
             form: this.$form.createForm(this, {name: 'advanced_search'})
         };
@@ -50,9 +48,11 @@ export default {
     methods: {
         handleSearch(e) {
             e.preventDefault();
-            this.form.validateFields((error, values) => {
-                this.$attrs.onSearch(values);
+            let values = {};
+            this.$refs.input.forEach(child => {
+                values[child.data.name] = child.inputParams;
             });
+            this.$attrs.onSearch(values);
         },
         handleReset() {
             this.form.resetFields();
@@ -69,7 +69,8 @@ export default {
         Input,
         Button,
         Icon,
-        FormItem: Form.Item
+        FormItem: Form.Item,
+        InputType: () => import('./inputType')
     }
 }
 </script>

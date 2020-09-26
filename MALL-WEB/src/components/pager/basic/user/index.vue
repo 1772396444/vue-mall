@@ -9,14 +9,14 @@
 </template>
 
 <script>
-import api from '@components/api/userApi';
+import api from '@components/api/basic/userApi';
 export default {
     data() {
         return {
             searchData: [
-                { label: '资源编码', name: 'id', placeholder: '资源编码' },
-                { label: '资源名称', name: 'name', placeholder: '资源名称' },
-                { label: '权限', name: 'permission', placeholder: '权限' },
+                { label: '资源编码', type: 'input', name: 'id', placeholder: '资源编码' },
+                { label: '资源名称', type: 'input', name: 'name', placeholder: '资源名称' },
+                { label: '权限', type: 'select', data: [{id:1,name:'2'},{id:2,name:'3'}], name: 'permission', placeholder: '权限' },
             ],
             modal: {},
             buttons: [
@@ -27,6 +27,7 @@ export default {
                     permission: 'account:test7',
                     callback: (modal) => this.showModal(modal),
                     modal: {
+                        type: 'modal',
                         title: '资源新增',
                         afterSubmit: () => this.$refs.table.refresh(),
                         component: resolve => require(['./add'] , resolve),
@@ -52,6 +53,7 @@ export default {
                             type: 'primary',
                             callback: (modal , params) => this.showModal(modal , params),
                             modal: {
+                                type: 'drawer',
                                 title: '资源修改',
                                 afterSubmit: () => this.$refs.table.refresh(),
                                 component: resolve => require(['./edit'] , resolve),
