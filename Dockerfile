@@ -2,10 +2,10 @@
 FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
-RUN cnpm install
+RUN npm install -g yarn
+RUN yarn install
 COPY . .
-RUN npm run build
+RUN yarn build
 #nginx 发布
 FROM nginx:stable-alpine as production-stage
 COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
