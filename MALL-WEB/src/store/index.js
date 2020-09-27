@@ -42,5 +42,16 @@ export default new Vuex.Store({
             }
             return state.buttons;
         }
+    },
+    actions: {
+        token (context, token) {
+            context.commit('token' , token);
+        },
+        routes (context, routes) {
+            context.commit('routes' , routes);
+        },
+        buttons (context, buttons) {
+            context.commit('buttons' , buttons);
+        }
     }
 });

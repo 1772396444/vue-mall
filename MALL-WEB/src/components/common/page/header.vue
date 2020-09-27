@@ -20,9 +20,9 @@ export default {
     methods: {
         logout() {
             api.logout({}).then(response => {
-                this.$store.commit('token' , '');
-                this.$store.commit('routes' , []);
-                this.$store.commit('buttons' , []);
+                this.$store.dispatch('token' , '');
+                this.$store.dispatch('routes' , []);
+                this.$store.dispatch('buttons' , []);
                 window.location.reload();
             });
         }

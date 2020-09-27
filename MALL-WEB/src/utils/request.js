@@ -36,7 +36,7 @@ server.interceptors.response.use(
                 antd.message.error(responseCode[response.data.code]);
             }else if (Object.keys(tokenCode).includes(JSON.stringify(response.data.code))) {
                 router.replace('/login');
-                store.commit('token', '');
+                store.dispatch('token', '');
                 localStorage.removeItem('MALL_TOKEN');
                 antd.message.error(responseCode[tokenCode.data.code]);
             }else{

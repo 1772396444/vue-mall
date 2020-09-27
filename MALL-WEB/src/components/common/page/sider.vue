@@ -81,7 +81,7 @@ export default {
                     });
                 }
             });
-            this.$store.commit('routes' , routes);
+            this.$store.dispatch('routes' , routes);
         },
         loadKeys() {
             this.$router.options.routes.forEach((route) => {
@@ -115,7 +115,7 @@ export default {
             }).forEach(menu => {
                 this.buttons.push(menu.permission);
             });
-            this.$store.commit('buttons' , this.buttons);
+            this.$store.dispatch('buttons' , this.buttons);
         },
     },
     components: {

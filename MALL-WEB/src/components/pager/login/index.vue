@@ -53,7 +53,7 @@ export default {
             }
             api.login({name: this.name , password: this.password}).then(response => {
                 if(response.data && response.data.code === 200){
-                    this.$store.commit('token' , response.data.token);
+                    this.$store.dispatch('token' , response.data.token);
                     this.$router.push('/index').catch(err => err);
                 }
             })
