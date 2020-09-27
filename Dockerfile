@@ -2,10 +2,9 @@
 FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install yarn -g
-RUN yarn install
+RUN npm install
 COPY . .
-RUN yarn build
+RUN npm run build
 #nginx 发布
 FROM nginx:stable-alpine as production-stage
 COPY nginx.conf /etc/nginx/nginx.conf
