@@ -27,7 +27,7 @@ const defaultRoutes = [
 
 // 新建默认路由
 const router = new Router({
-    mode: ROUTE_MODE,
+    // mode: ROUTE_MODE,
     base: ROUTE_BASE,
     routes: [
         {
