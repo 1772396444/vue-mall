@@ -81,7 +81,7 @@ export default {
         }
     },
     created() {
-        this.loadBreadcrumbList();
+        if(this.showBar) this.loadBreadcrumbList();
     },
     methods: {
         loadBreadcrumbList() {

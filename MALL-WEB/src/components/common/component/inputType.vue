@@ -2,21 +2,21 @@
     <div>
         
         <Input
-            v-if="data.type.toUpperCase() === 'INPUT'"
+            v-if="!data.type || data.type.toUpperCase() === 'INPUT'"
             v-decorator="[data.name]"
             :placeholder="data.placeholder"
             v-model="inputParams"
         />
     
-        <Select v-else-if="data.type.toUpperCase() === 'SELECT'" v-decorator="['select']"
+        <Select v-else-if="data.type && data.type.toUpperCase() === 'SELECT'" v-decorator="['select']"
             showSearch @onSearch="handleSerach" :placeholder="data.placeholder" v-model="inputParams" >
             <Option v-for="(item,index) in data.data" :value="item.id" :key="index" >{{item.name}}</Option>
         </Select>
     
-        <DatePicker v-else-if="data.type.toUpperCase() === 'DATE'" :format="dateFormat"
+        <DatePicker v-else-if="data.type && data.type.toUpperCase() === 'DATE'" :format="dateFormat"
             :default-value="moment(new Date(), dateFormat)" @change="change" />
     
-        <MonthPicker v-else-if="data.type.toUpperCase() === 'MONTH'" :format="monthFormat"
+        <MonthPicker v-else-if="data.type && data.type.toUpperCase() === 'MONTH'" :format="monthFormat"
             :default-value="moment(new Date(), monthFormat)" @change="change" />
     
         <TreeSelect
@@ -27,16 +27,9 @@
             :placeholder="data.placeholder"
             allow-clear
             tree-default-expand-all
-            v-else-if="data.type.toUpperCase() === 'TREE'"
+            v-else-if="data.type && data.type.toUpperCase() === 'TREE'"
         >
         </TreeSelect>
-    
-        <Input
-            v-else
-            v-decorator="[data.name]"
-            :placeholder="data.placeholder"
-            v-model="inputParams"
-        />
         
     </div>
 </template>
@@ -55,13 +48,14 @@ export default {
         }
     },
     created() {
-        if(this.data.type.toUpperCase() === 'DATE') {
-            this.inputParams = moment(new Date(), this.dateFormat).format(this.dateFormat);
-        }else if(this.data.type.toUpperCase() === 'MONTH') {
-            this.inputParams = moment(new Date(), this.monthFormat).format(this.monthFormat);
-        }else if(this.data.type.toUpperCase() === 'TREE') {
-            this.caseTreeData(this.data.data , 0 , false);
-            console.log(JSON.stringify(this.treeDate))
+        if(this.data.type){
+            if(this.data.type.toUpperCase() === 'DATE') {
+                this.inputParams = moment(new Date(), this.dateFormat).format(this.dateFormat);
+            }else if(this.data.type.toUpperCase() === 'MONTH') {
+                this.inputParams = moment(new Date(), this.monthFormat).format(this.monthFormat);
+            }else if(this.data.type.toUpperCase() === 'TREE') {
+                this.caseTreeData(this.data.data , 0 , false);
+            }
         }
     },
     methods: {

@@ -36,8 +36,8 @@ export default {
             this.loading = true;
             this.pagination.pageNo = this.pagination.current
             this.refreshTable(this.pagination).then(response => {
-                if (response.status) {
-                    response.data.records.forEach((item, index) => {
+                if (response.status && response.data) {
+                    response.data.records && response.data.records.forEach((item, index) => {
                         item.key = index;
                     });
                     this.tableData = response.data.records;
