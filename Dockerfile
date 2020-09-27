@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 #nginx 发布
 FROM nginx:stable-alpine as production-stage
-COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
